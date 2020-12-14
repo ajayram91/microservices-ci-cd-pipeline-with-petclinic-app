@@ -1,0 +1,21 @@
+nodes:
+  - address: 34.207.170.0
+    internal_address: 172.31.35.182
+    user: ubuntu
+    role: [controlplane, worker, etcd]
+
+services:
+  etcd:
+    snapshot: true
+    creation: 6h
+    retention: 24h
+
+ssh_key_path: ~/.ssh/ajay-rancher.key
+
+# Required for external TLS termination with
+# ingress-nginx v0.22+
+ingress:
+  provider: nginx
+  options:
+    use-forwarded-headers: "true"
+    
